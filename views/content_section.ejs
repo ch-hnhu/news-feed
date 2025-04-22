@@ -2,63 +2,29 @@
   <div class="row">
     <div class="col-lg-8 col-md-8 col-sm-8">
       <div class="slick_slider">
-        <div class="single_iteam"> <a href="pages/single_page.html"> <img src="images/slider_img4.jpg" alt=""></a>
-          <div class="slider_article">
-            <h2><a class="slider_tittle" href="pages/single_page.html">Fusce eu nulla semper porttitor felis sit amet</a></h2>
-            <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra urna. Morbi dui...</p>
+        <% layout.posts.slice(0,4).forEach((item) => { %>
+          <div class="single_iteam"> <a href="pages/single_page.html"> <img src="img/<%= item.image_url %>" alt=""></a>
+            <div class="slider_article">
+              <h2><a class="slider_tittle" href="pages/single_page.html"> <%= item.title %> </a></h2>
+              <p> <%= item.post_content %> </p>
+            </div>
           </div>
-        </div>
-        <div class="single_iteam"> <a href="pages/single_page.html"> <img src="images/slider_img2.jpg" alt=""></a>
-          <div class="slider_article">
-            <h2><a class="slider_tittle" href="pages/single_page.html">Fusce eu nulla semper porttitor felis sit amet</a></h2>
-            <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra urna. Morbi dui...</p>
-          </div>
-        </div>
-        <div class="single_iteam"> <a href="pages/single_page.html"> <img src="images/slider_img3.jpg" alt=""></a>
-          <div class="slider_article">
-            <h2><a class="slider_tittle" href="pages/single_page.html">Fusce eu nulla semper porttitor felis sit amet</a></h2>
-            <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra urna. Morbi dui...</p>
-          </div>
-        </div>
-        <div class="single_iteam"> <a href="pages/single_page.html"> <img src="images/slider_img1.jpg" alt=""></a>
-          <div class="slider_article">
-            <h2><a class="slider_tittle" href="pages/single_page.html">Fusce eu nulla semper porttitor felis sit amet</a></h2>
-            <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra urna. Morbi dui...</p>
-          </div>
-        </div>
+        <% }) %>
       </div>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4">
       <div class="latest_post">
-        <h2><span>Latest post</span></h2>
+        <h2><span>Bài viết mới</span></h2>
         <div class="latest_post_container">
           <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
           <ul class="latest_postnav">
-            <li>
-              <div class="media"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="img/post_img1.jpg"> </a>
-                <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
-              </div>
-            </li>
-            <li>
-              <div class="media"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="img/post_img1.jpg"> </a>
-                <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-              </div>
-            </li>
-            <li>
-              <div class="media"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="img/post_img1.jpg"> </a>
-                <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
-              </div>
-            </li>
-            <li>
-              <div class="media"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="img/post_img1.jpg"> </a>
-                <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
-              </div>
-            </li>
-            <li>
-              <div class="media"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="img/post_img1.jpg"> </a>
-                <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-              </div>
-            </li>
+            <% layout.posts.slice(0,5).forEach((item) => { %>
+              <li>
+                <div class="media"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="img/<%= item.image_url %>"> </a>
+                  <div class="media-body"> <a href="pages/single_page.html" class="catg_title"><%= item.title %></a> </div>
+                </div>
+              </li>
+            <% }) %>
           </ul>
           <div id="next-button"><i class="fa  fa-chevron-down"></i></div>
         </div>
@@ -72,39 +38,28 @@
     <div class="col-lg-8 col-md-8 col-sm-8">
       <div class="left_content">
         <div class="single_post_content">
-          <h2><span>Business</span></h2>
+          <h2><span>THỂ THAO</span></h2>
           <div class="single_post_content_left">
             <ul class="business_catgnav  wow fadeInDown">
+              <% if(layout.TheThao && layout.TheThao.length > 0) { %>
               <li>
-                <figure class="bsbig_fig"> <a href="pages/single_page.html" class="featured_img"> <img alt="" src="images/featured_img1.jpg"> <span class="overlay"></span> </a>
-                  <figcaption> <a href="pages/single_page.html">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
-                  <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
-                </figure>
+                  <figure class="bsbig_fig"> <a href="pages/single_page.html" class="featured_img"> <img alt="" src="img/<%= layout.TheThao[0].image_url %>"> <span class="overlay"></span> </a>
+                    <figcaption> <a href="pages/single_page.html"> <%= layout.TheThao[0].title %> </a> </figcaption>
+                    <p> <%= layout.TheThao[0].post_content %> </p>
+                  </figure>
               </li>
             </ul>
           </div>
           <div class="single_post_content_right">
             <ul class="spost_nav">
-              <li>
-                <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                  <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
-                </div>
-              </li>
-              <li>
-                <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                  <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-                </div>
-              </li>
-              <li>
-                <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                  <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
-                </div>
-              </li>
-              <li>
-                <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                  <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
-                </div>
-              </li>
+              <% layout.TheThao.slice(1,5).forEach((item) => { %>
+                <li>
+                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="img/<%= item.image_url %>"> </a>
+                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> <%= item.title %> </a> </div>
+                  </div>
+                </li>
+              <% }) %>
+              <% } %>
             </ul>
           </div>
         </div>
