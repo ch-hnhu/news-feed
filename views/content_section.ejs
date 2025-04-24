@@ -2,14 +2,18 @@
   <div class="row">
     <div class="col-lg-8 col-md-8 col-sm-8">
       <div class="slick_slider">
-        <% layout.posts.slice(0,4).forEach((item) => { %>
-          <div class="single_iteam"> <a href="pages/single_page.html"> <img src="img/<%= item.image_url %>" alt=""></a>
+        <% layout.posts.slice(0,4).forEach((item)=> { %>
+          <div class="single_iteam"> <a href="/post/<%= item.post_id %>"> <img src="img/<%= item.image_url %>" alt=""></a>
             <div class="slider_article">
-              <h2><a class="slider_tittle" href="pages/single_page.html"> <%= item.title %> </a></h2>
-              <p> <%= item.post_content %> </p>
+              <h2><a class="slider_tittle" href="/post/<%= item.post_id %>">
+                  <%= item.title %>
+                </a></h2>
+              <p>
+                <%= item.post_content %>
+              </p>
             </div>
           </div>
-        <% }) %>
+          <% }) %>
       </div>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4">
@@ -18,13 +22,16 @@
         <div class="latest_post_container">
           <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
           <ul class="latest_postnav">
-            <% layout.posts.slice(0,5).forEach((item) => { %>
+            <% layout.latest_posts.slice(0,5).forEach((item)=> { %>
               <li>
-                <div class="media"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="img/<%= item.image_url %>"> </a>
-                  <div class="media-body"> <a href="pages/single_page.html" class="catg_title"><%= item.title %></a> </div>
+                <div class="media"> <a href="/post/<%= item.post_id %>" class="media-left"> <img alt=""
+                      src="img/<%= item.image_url %>"> </a>
+                  <div class="media-body"> <a href="/post/<%= item.post_id %>" class="catg_title">
+                      <%= item.title %>
+                    </a> </div>
                 </div>
               </li>
-            <% }) %>
+              <% }) %>
           </ul>
           <div id="next-button"><i class="fa  fa-chevron-down"></i></div>
         </div>
@@ -41,169 +48,133 @@
           <h2><span>THỂ THAO</span></h2>
           <div class="single_post_content_left">
             <ul class="business_catgnav  wow fadeInDown">
-              <% if(layout.TheThao && layout.TheThao.length > 0) { %>
-              <li>
-                  <figure class="bsbig_fig"> <a href="pages/single_page.html" class="featured_img"> <img alt="" src="img/<%= layout.TheThao[0].image_url %>"> <span class="overlay"></span> </a>
-                    <figcaption> <a href="pages/single_page.html"> <%= layout.TheThao[0].title %> </a> </figcaption>
-                    <p> <%= layout.TheThao[0].post_content %> </p>
+              <% if(data.TheThao && data.TheThao.length> 0) { %>
+                <li>
+                  <figure class="bsbig_fig"> <a href="/post/<%= data.TheThao[0].post_id %>" class="featured_img"> <img alt=""
+                        src="img/<%= data.TheThao[0].image_url %>"> <span class="overlay"></span> </a>
+                    <figcaption> <a href="/post/<%= data.TheThao[0].post_id %>">
+                        <%= data.TheThao[0].title %>
+                      </a> </figcaption>
+                    <p>
+                      <%= data.TheThao[0].post_content %>
+                    </p>
                   </figure>
-              </li>
+                </li>
             </ul>
           </div>
           <div class="single_post_content_right">
             <ul class="spost_nav">
-              <% layout.TheThao.slice(1,5).forEach((item) => { %>
+              <% data.TheThao.slice(1,5).forEach((item)=> { %>
                 <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="img/<%= item.image_url %>"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> <%= item.title %> </a> </div>
+                  <div class="media wow fadeInDown"> <a href="/post/<%= item.post_id %>" class="media-left"> <img alt=""
+                        src="img/<%= item.image_url %>"> </a>
+                    <div class="media-body"> <a href="/post/<%= item.post_id %>" class="catg_title">
+                        <%= item.title %>
+                      </a> </div>
                   </div>
                 </li>
-              <% }) %>
-              <% } %>
+                <% }) %>
+                  <% } %>
             </ul>
           </div>
         </div>
         <div class="fashion_technology_area">
           <div class="fashion">
             <div class="single_post_content">
-              <h2><span>Fashion</span></h2>
+              <h2><span>THỜI TRANG</span></h2>
               <ul class="business_catgnav wow fadeInDown">
                 <li>
-                  <figure class="bsbig_fig"> <a href="pages/single_page.html" class="featured_img"> <img alt="" src="images/featured_img2.jpg"> <span class="overlay"></span> </a>
-                    <figcaption> <a href="pages/single_page.html">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
-                    <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
-                  </figure>
+                  <% if(data.ThoiTrang && data.ThoiTrang.length> 0) { %>
+                    <figure class="bsbig_fig"> <a href="/post/<%= data.ThoiTrang[0].post_id %>" class="featured_img"> <img alt=""
+                          src="img/<%= data.ThoiTrang[0].image_url %>"> <span class="overlay"></span> </a>
+                      <figcaption> <a href="/post/<%= data.ThoiTrang[0].post_id %>">
+                          <%= data.ThoiTrang[0].title %>
+                        </a> </figcaption>
+                      <p>
+                        <%= data.ThoiTrang[0].post_content %>
+                      </p>
+                    </figure>
+                    <% } %>
                 </li>
               </ul>
               <ul class="spost_nav">
-                <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
-                  </div>
-                </li>
+                <% data.ThoiTrang.slice(1,5).forEach((item)=> { %>
+                  <li>
+                    <div class="media wow fadeInDown"> <a href="/post/<%= item.post_id %>" class="media-left"> <img alt=""
+                          src="img/<%= item.image_url %>"> </a>
+                      <div class="media-body"> <a href="/post/<%= item.post_id %>" class="catg_title">
+                          <%= item.title %>
+                        </a> </div>
+                    </div>
+                  </li>
+                  <% }) %>
               </ul>
             </div>
           </div>
           <div class="technology">
             <div class="single_post_content">
-              <h2><span>Technology</span></h2>
+              <h2><span>CÔNG NGHỆ</span></h2>
               <ul class="business_catgnav">
                 <li>
-                  <figure class="bsbig_fig wow fadeInDown"> <a href="pages/single_page.html" class="featured_img"> <img alt="" src="images/featured_img3.jpg"> <span class="overlay"></span> </a>
-                    <figcaption> <a href="pages/single_page.html">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
-                    <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
-                  </figure>
+                  <% if (data.CongNghe && data.CongNghe.length> 0) { %>
+                    <figure class="bsbig_fig wow fadeInDown"> <a href="/post/<%= data.CongNghe[0].post_id %>" class="featured_img">
+                        <img alt="" src="img/<%= data.CongNghe[0].image_url %>"> <span class="overlay"></span> </a>
+                      <figcaption> <a href="/post/<%= data.CongNghe[0].post_id %>">
+                          <%= data.CongNghe[0].title %>
+                        </a> </figcaption>
+                      <p>
+                        <%= data.CongNghe[0].post_content %>
+                      </p>
+                    </figure>
+                    <% } %>
                 </li>
               </ul>
               <ul class="spost_nav">
-                <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
-                  </div>
-                </li>
+                <% data.CongNghe.slice(1,5).forEach((item)=> { %>
+                  <li>
+                    <div class="media wow fadeInDown"> <a href="/post/<%= item.post_id %>" class="media-left"> <img alt=""
+                          src="img/<%= item.image_url %>"> </a>
+                      <div class="media-body"> <a href="/post/<%= item.post_id %>" class="catg_title">
+                          <%= item.title %>
+                        </a> </div>
+                    </div>
+                  </li>
+                  <% }) %>
               </ul>
             </div>
           </div>
         </div>
-        <!-- <div class="single_post_content">
-          <h2><span>Photography</span></h2>
-          <ul class="photograph_nav  wow fadeInDown">
-            <li>
-              <div class="photo_grid">
-                <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="images/photograph_img2.jpg" title="Photography Ttile 1"> <img src="images/photograph_img2.jpg" alt=""/></a> </figure>
-              </div>
-            </li>
-            <li>
-              <div class="photo_grid">
-                <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="images/photograph_img3.jpg" title="Photography Ttile 2"> <img src="images/photograph_img3.jpg" alt=""/> </a> </figure>
-              </div>
-            </li>
-            <li>
-              <div class="photo_grid">
-                <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="images/photograph_img4.jpg" title="Photography Ttile 3"> <img src="images/photograph_img4.jpg" alt=""/> </a> </figure>
-              </div>
-            </li>
-            <li>
-              <div class="photo_grid">
-                <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="images/photograph_img4.jpg" title="Photography Ttile 4"> <img src="images/photograph_img4.jpg" alt=""/> </a> </figure>
-              </div>
-            </li>
-            <li>
-              <div class="photo_grid">
-                <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="images/photograph_img2.jpg" title="Photography Ttile 5"> <img src="images/photograph_img2.jpg" alt=""/> </a> </figure>
-              </div>
-            </li>
-            <li>
-              <div class="photo_grid">
-                <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="images/photograph_img3.jpg" title="Photography Ttile 6"> <img src="images/photograph_img3.jpg" alt=""/> </a> </figure>
-              </div>
-            </li>
-          </ul>
-        </div> -->
         <div class="single_post_content">
-          <h2><span>Games</span></h2>
+          <h2><span>GAMES</span></h2>
           <div class="single_post_content_left">
             <ul class="business_catgnav">
               <li>
-                <figure class="bsbig_fig  wow fadeInDown"> <a class="featured_img" href="pages/single_page.html"> <img src="images/featured_img1.jpg" alt=""> <span class="overlay"></span> </a>
-                  <figcaption> <a href="pages/single_page.html">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
-                  <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
-                </figure>
+                <% if (data.Game && data.Game.length> 0) { %>
+                  <figure class="bsbig_fig  wow fadeInDown"> <a class="featured_img" href="/post/<%= data.Game[0].post_id %>"> <img
+                        src="img/<%= data.Game[0].image_url %>" alt=""> <span class="overlay"></span> </a>
+                    <figcaption> <a href="/post/<%= data.Game[0].post_id %>">
+                        <%= data.Game[0].title %>
+                      </a> </figcaption>
+                    <p>
+                      <%= data.Game[0].post_content %>
+                    </p>
+                  </figure>
+                  <% } %>
               </li>
             </ul>
           </div>
           <div class="single_post_content_right">
             <ul class="spost_nav">
-              <li>
-                <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                  <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
-                </div>
-              </li>
-              <li>
-                <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                  <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-                </div>
-              </li>
-              <li>
-                <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                  <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
-                </div>
-              </li>
-              <li>
-                <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                  <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
-                </div>
-              </li>
+              <% data.Game.slice(1,5).forEach((item)=> { %>
+                <li>
+                  <div class="media wow fadeInDown"> <a href="/post/<%= item.post_id %>" class="media-left"> <img alt=""
+                        src="img/<%= item.image_url %>"> </a>
+                    <div class="media-body"> <a href="/post/<%= item.post_id %>" class="catg_title">
+                        <%= item.title %>
+                      </a> </div>
+                  </div>
+                </li>
+                <% }) %>
             </ul>
           </div>
         </div>
@@ -212,100 +183,30 @@
     <div class="col-lg-4 col-md-4 col-sm-4">
       <aside class="right_content">
         <div class="single_sidebar">
-          <h2><span>Popular Post</span></h2>
+          <h2><span>BÀI VIẾT THỊNH HÀNH</span></h2>
           <ul class="spost_nav">
-            <li>
-              <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
-              </div>
-            </li>
-            <li>
-              <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-              </div>
-            </li>
-            <li>
-              <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
-              </div>
-            </li>
-            <li>
-              <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
-              </div>
-            </li>
+            <% layout.posts.slice(0,4).forEach((item)=> { %>
+              <li>
+                <div class="media wow fadeInDown"> <a href="/post/<%= item.post_id %>" class="media-left"> <img alt=""
+                      src="img/<%= item.image_url %>"> </a>
+                  <div class="media-body"> <a href="/post/<%= item.post_id %>" class="catg_title">
+                      <%= item.title %>
+                    </a> </div>
+                </div>
+              </li>
+              <% }) %>
           </ul>
         </div>
-        <div class="single_sidebar">
-          <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#category" aria-controls="home" role="tab" data-toggle="tab">Category</a></li>
-            <li role="presentation"><a href="#video" aria-controls="profile" role="tab" data-toggle="tab">Video</a></li>
-            <li role="presentation"><a href="#comments" aria-controls="messages" role="tab" data-toggle="tab">Comments</a></li>
-          </ul>
-          <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="category">
-              <ul>
-                <li class="cat-item"><a href="#">Sports</a></li>
-                <li class="cat-item"><a href="#">Fashion</a></li>
-                <li class="cat-item"><a href="#">Business</a></li>
-                <li class="cat-item"><a href="#">Technology</a></li>
-                <li class="cat-item"><a href="#">Games</a></li>
-                <li class="cat-item"><a href="#">Life &amp; Style</a></li>
-                <li class="cat-item"><a href="#">Photography</a></li>
-              </ul>
-            </div>
-            <div role="tabpanel" class="tab-pane" id="video">
-              <div class="vide_area">
-                <iframe width="100%" height="250" src="http://www.youtube.com/embed/h5QWbURNEpA?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
-              </div>
-            </div>
-            <div role="tabpanel" class="tab-pane" id="comments">
-              <ul class="spost_nav">
-                <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
         <div class="single_sidebar wow fadeInDown">
-          <h2><span>Sponsor</span></h2>
-          <a class="sideAdd" href="#"><img src="images/add_img.jpg" alt=""></a> </div>
-        <div class="single_sidebar wow fadeInDown">
-          <h2><span>Category Archive</span></h2>
+          <h2><span>DANH MỤC</span></h2>
           <select class="catgArchive">
-            <option>Select Category</option>
-            <option>Life styles</option>
-            <option>Sports</option>
-            <option>Technology</option>
-            <option>Treads</option>
+            <option>Chọn danh mục</option>
+            <% layout.categories.slice(0,10).forEach((item)=> { %>
+              <option>
+                <%= item.category_name %>
+              </option>
+              <% }) %>
           </select>
-        </div>
-        <div class="single_sidebar wow fadeInDown">
-          <h2><span>Links</span></h2>
-          <ul>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Rss Feed</a></li>
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Life &amp; Style</a></li>
-          </ul>
         </div>
       </aside>
     </div>

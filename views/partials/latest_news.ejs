@@ -3,8 +3,8 @@
         <div class="col-lg-12 col-md-12">
         <div class="latest_newsarea"> <span>Tin mới nhất</span>
             <ul id="ticker01" class="news_sticker">
-                <% layout.posts.slice(0,10).forEach((item) => { %>
-                    <li><a href="#"><img src="img/<%= item.image_url %>" alt=""> <%= item.title %> </a></li>
+                <% layout.latest_posts.forEach((item) => { %>
+                    <li><a href="/post/<%= item.post_id %>"><img src="/img/<%= item.image_url %>" alt=""> <%= item.title %> </a></li>
                 <% }) %>
             </ul>
             <div class="social_area">

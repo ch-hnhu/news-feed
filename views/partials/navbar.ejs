@@ -9,7 +9,7 @@
       <ul class="nav navbar-nav main_nav">
         <li class="active"><a href="/"><span class="fa fa-home desktop-home"></span><span
               class="mobile-show">Home</span></a></li>
-        <% layout.categories.forEach((item)=> { %>
+        <% layout.categories.slice(0,10).forEach((item)=> { %>
           <li><a href="/category/<%= item.category_id %>">
               <%= item.category_name %>
             </a></li>
