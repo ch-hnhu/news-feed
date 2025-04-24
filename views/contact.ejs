@@ -26,9 +26,9 @@
             <ul class="spost_nav">
               <% layout.posts.slice(0,4).forEach((item)=> { %>
                 <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt=""
+                  <div class="media wow fadeInDown"> <a href="/post/<%= item.post_id %>" class="media-left"> <img alt=""
                         src="img/<%= item.image_url %>"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title">
+                    <div class="media-body"> <a href="/post/<%= item.post_id %>" class="catg_title">
                         <%= item.title %>
                       </a> </div>
                   </div>
