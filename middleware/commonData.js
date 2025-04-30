@@ -6,9 +6,9 @@ module.exports = (req, res, next) => {
 
     const query_tag = 'SELECT tag_id, tag_name FROM tags';
 
-    const query_post = 'SELECT post_id, title, post_content, image_url FROM posts WHERE STATUS = 1 ORDER BY views DESC';
+    const query_post = 'SELECT post_id, title, subtitle, image_url FROM posts WHERE status = 1 ORDER BY views DESC';
 
-    const query_latest_posts = `SELECT post_id, title, post_content, image_url FROM posts WHERE STATUS = 1 ORDER BY created_at DESC LIMIT 10`
+    const query_latest_posts = `SELECT post_id, title, subtitle, image_url FROM posts WHERE status = 1 ORDER BY created_at DESC LIMIT 10`
 
 
     conn.query(query_category, (err, result) => {
@@ -39,7 +39,9 @@ module.exports = (req, res, next) => {
                         return next();
                     }
                     data.latest_posts = JSON.parse(JSON.stringify(result));
+
                     data.dateVietNamNow = getDateVietNam(new Date());
+                    
                     res.locals.layout = data;
                     next();
                 });

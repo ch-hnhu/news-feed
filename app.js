@@ -12,27 +12,27 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
 	const query_TheThao = `
-  SELECT post_id, title, post_content, image_url 
+  SELECT post_id, title, subtitle, image_url 
   FROM posts join categories on posts.category_id = categories.category_id
-  WHERE posts.STATUS = 1 AND categories.category_name = N'Thể thao'
+  WHERE posts.status = 1 AND categories.category_name = N'Thể thao'
   `;
 
 	const query_ThoiTrang = `
-  SELECT post_id, title, post_content, image_url 
+  SELECT post_id, title, subtitle, image_url 
   FROM posts join categories on posts.category_id = categories.category_id
-  WHERE posts.STATUS = 1 AND categories.category_name = N'Thời trang'
+  WHERE posts.status = 1 AND categories.category_name = N'Thời trang'
   `
 
 	const query_CongNghe = `
-  SELECT post_id, title, post_content, image_url 
+  SELECT post_id, title, subtitle, image_url 
   FROM posts join categories on posts.category_id = categories.category_id
-  WHERE posts.STATUS = 1 AND categories.category_name = N'Công nghệ'
+  WHERE posts.status = 1 AND categories.category_name = N'Công nghệ'
   `
 
 	const query_Game = `
-  SELECT post_id, title, post_content, image_url 
+  SELECT post_id, title, subtitle, image_url 
   FROM posts join categories on posts.category_id = categories.category_id
-  WHERE posts.STATUS = 1 AND categories.category_name = N'Game'
+  WHERE posts.status = 1 AND categories.category_name = N'Game'
   `
 
 	let data = {}
@@ -104,23 +104,23 @@ app.get('/post/:id', (req, res) => {
 
 	const query = `
 		SELECT 
-			post_id, title, post_content, image_url, author_id, posts.category_id, posts.created_at, posts.STATUS, views, categories.category_name, users.full_name as author
+			post_id, title, subtitle, image_url, author_id, posts.category_id, posts.created_at, posts.status, views, categories.category_name, users.full_name as author
 		FROM posts
 			LEFT JOIN categories ON categories.category_id = posts.category_id
 			LEFT JOIN users ON users.user_id = posts.author_id
-		WHERE posts.post_id = ? AND posts.STATUS = 1
+		WHERE posts.post_id = ? AND posts.status = 1
 	`;
 
 	const query_related = `
 		SELECT 
-			post_id, title, post_content, image_url, author_id, posts.category_id, posts.created_at, posts.STATUS, views, categories.category_name, users.full_name as author
+			post_id, title, subtitle, image_url, author_id, posts.category_id, posts.created_at, posts.status, views, categories.category_name, users.full_name as author
 		FROM posts
 			LEFT JOIN categories ON categories.category_id = posts.category_id
 			LEFT JOIN users ON users.user_id = posts.author_id
 		WHERE
 			posts.category_id = (SELECT category_id FROM posts WHERE post_id = ?) 
 			AND posts.post_id != ?
-			AND posts.STATUS = 1
+			AND posts.status = 1
 			LIMIT 3
 	`;
 
