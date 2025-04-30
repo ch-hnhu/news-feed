@@ -104,7 +104,7 @@ app.get('/post/:id', (req, res) => {
 
 	const query = `
 		SELECT 
-			post_id, title, subtitle, image_url, author_id, posts.category_id, posts.created_at, posts.status, views, categories.category_name, users.full_name as author
+			post_id, title, subtitle, post_content, image_url, author_id, posts.category_id, posts.created_at, posts.status, views, categories.category_name, users.full_name as author
 		FROM posts
 			LEFT JOIN categories ON categories.category_id = posts.category_id
 			LEFT JOIN users ON users.user_id = posts.author_id
@@ -113,7 +113,7 @@ app.get('/post/:id', (req, res) => {
 
 	const query_related = `
 		SELECT 
-			post_id, title, subtitle, image_url, author_id, posts.category_id, posts.created_at, posts.status, views, categories.category_name, users.full_name as author
+			post_id, title, subtitle, post_content, image_url, author_id, posts.category_id, posts.created_at, posts.status, views, categories.category_name, users.full_name as author
 		FROM posts
 			LEFT JOIN categories ON categories.category_id = posts.category_id
 			LEFT JOIN users ON users.user_id = posts.author_id
