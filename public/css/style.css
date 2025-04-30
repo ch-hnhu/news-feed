@@ -1886,3 +1886,15 @@ figure.effect-layla:hover img {
         width: 32.1%;
     }
 }
+
+#newsletter_area {
+    border-radius: 20px;
+    background-color: #252525;
+    color: #ddd;
+    display: inline;
+    float: left;
+    padding: 10px 30px 48px;
+    margin: 30px 0;
+    width: 100%;
+    text-align: center;
+}

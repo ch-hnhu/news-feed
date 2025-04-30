@@ -1,3 +1,21 @@
+<section id="newsletter_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="newsletter
+                    wow fadeInDown">
+                    <h1 style="font-weight: bolder; margin-bottom: 15px;">Đăng ký nhận tin tức <span style="padding: 4px; border-radius: 4px; background-color: white; color: #d083cf;">mới nhất</span></h1>
+                    <p style="margin-bottom: 15px;">Nhập email của bạn để nhận thông báo về các bài viết mới nhất!</p>
+                    <form style="margin: 0 30%;" class="d-flex contact_form" role="subscribe">
+                        <input class="form-control me-2" type="subscribe" placeholder="Nhập địa chỉ email của bạn.." aria-label="Subscribe">
+                        <input style="margin: 0 5px; width: 80px; height: 34px;" type="submit" value="Đăng ký">
+                      </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <footer id="footer">
     <div class="footer_top">
         <div class="row">
@@ -5,7 +23,7 @@
                 <div class="footer_widget wow fadeInDown">
                     <h2>Tag</h2>
                     <ul class="tag_nav">
-                        <% layout.tags.forEach((item)=> { %>
+                        <% layout.tags.slice(0,5).forEach((item)=> { %>
                             <li><a href="/tag/<%= item.tag_id %>">
                                     <%= item.tag_name %>
                                 </a></li>
