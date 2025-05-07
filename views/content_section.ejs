@@ -199,10 +199,10 @@
         </div>
         <div class="single_sidebar wow fadeInDown">
           <h2><span>DANH MỤC</span></h2>
-          <select class="catgArchive">
+          <select class="catgArchive" onchange="redirectToCategory(this)">
             <option>Chọn danh mục</option>
             <% layout.categories.slice(0,10).forEach((item)=> { %>
-              <option>
+              <option value="/search/category/<%= item.category_id %>">
                 <%= item.category_name %>
               </option>
               <% }) %>
