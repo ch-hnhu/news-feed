@@ -2,14 +2,16 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="newsletter
-                    wow fadeInDown">
-                    <h1 style="font-weight: bolder; margin-bottom: 15px;">Đăng ký nhận tin tức <span style="padding: 4px; border-radius: 4px; background-color: white; color: #d083cf;">mới nhất</span></h1>
+                <div class="newsletter wow fadeInDown">
+                    <h1 style="font-weight: bolder; margin-bottom: 15px;">Đăng ký nhận tin tức <span
+                            style="padding: 4px; border-radius: 4px; background-color: white; color: #d083cf;">mới
+                            nhất</span></h1>
                     <p style="margin-bottom: 15px;">Nhập email của bạn để nhận thông báo về các bài viết mới nhất!</p>
                     <form style="margin: 0 30%;" class="d-flex contact_form" role="subscribe">
-                        <input class="form-control me-2" type="subscribe" placeholder="Nhập địa chỉ email của bạn.." aria-label="Subscribe">
+                        <input class="form-control me-2" type="subscribe" placeholder="Nhập địa chỉ email của bạn.."
+                            aria-label="Subscribe">
                         <input style="margin: 0 5px; width: 80px; height: 34px;" type="submit" value="Đăng ký">
-                      </form>
+                    </form>
                 </div>
             </div>
         </div>
@@ -70,6 +72,37 @@
 <script src="/js/jquery.newsTicker.min.js"></script>
 <script src="/js/jquery.fancybox.pack.js"></script>
 <script src="/js/custom.js"></script>
+<script>
+    $("document").ready(function () {
+        $("#contactModal").modal("show");
+    });
+    //Xử lý dữ liệu form
+    $(document).ready(function () {
+        $('#contactForm').on('submit', function (e) {
+            let isValid = true;
+            let name = $('#name').val().trim();
+            let phone = $('#phone').val().trim();
+
+            // Kiểm tra tên: chỉ cho phép chữ cái và khoảng trắng
+            const nameRegex = /^[a-zA-ZÀ-ỹ\s]+$/;
+            if (!nameRegex.test(name)) {
+                alert("Họ tên chỉ được chứa chữ cái và khoảng trắng.");
+                isValid = false;
+            }
+
+            // Kiểm tra số điện thoại: phải là số và đủ 10 chữ số
+            const phoneRegex = /^\d{10}$/;
+            if (!phoneRegex.test(phone)) {
+                alert("Số điện thoại phải đúng 10 chữ số.");
+                isValid = false;
+            }
+
+            if (!isValid) {
+                e.preventDefault(); // Ngăn form gửi đi nếu không hợp lệ
+            }
+        });
+    });
+</script>
 </body>
 
 </html>

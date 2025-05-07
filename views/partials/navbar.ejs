@@ -15,8 +15,9 @@
             </a></li>
           <% }); %>
       </ul>
-      <form style="margin: 8px;" class="d-flex contact_form" role="search">
-        <input style="margin: 0 8px;" class="form-control me-2" type="search" placeholder="Nhập tìm kiếm.." aria-label="Search">
+      <form action="/search" style="margin: 8px;" class="d-flex contact_form" role="search">
+        <input name="searchKey" style="margin: 0 8px;" class="form-control me-2" type="search"
+          placeholder="Nhập tìm kiếm.." aria-label="Search">
         <input style="margin: 0; width: 80px; height: 34px;" type="submit" value="Tìm kiếm">
       </form>
     </div>

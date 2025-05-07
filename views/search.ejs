@@ -1,0 +1,75 @@
+<!-- <h2><span>KẾT QUẢ TÌM KIẾM</span></h2>
+<ul class="spost_nav">
+  <% data.posts.forEach((item)=> { %>
+    <li>
+      <div class="media wow fadeInDown"> <a href="/post/<%= item.post_id %>" class="media-left"> <img alt=""
+            src="img/<%= item.image_url %>"> </a>
+        <div class="media-body"> <a href="/post/<%= item.post_id %>" class="catg_title">
+            <%= item.title %>
+          </a> </div>
+      </div>
+    </li>
+    <% }) %>
+</ul> -->
+
+<section id="contentSection">
+  <div class="row">
+    <div class="col-lg-8 col-md-8 col-sm-8">
+      <div class="left_content">
+        <div class="single_post_content">
+          <h2><span>KẾT QUẢ TÌM KIẾM</span></h2>
+          <ul class="spost_nav">
+            <% data.posts.forEach((item)=> { %>
+              <li>
+                <div class="media wow fadeInDown"> <a href="/post/<%= item.post_id %>" class="media-left"> <img alt=""
+                      src="img/<%= item.image_url %>"> </a>
+                  <div class="media-body"> <a href="/post/<%= item.post_id %>" class="catg_title">
+                      <%= item.title %>
+                    </a> </div>
+                </div>
+              </li>
+              <% }) %>
+          </ul>
+        </div>
+        <!-- <div class="pagination_area">
+          <ul class="pagination">
+            <% for (let i = 1; i <= data.totalPages; i++) { %>
+              <li><a href="/search/<%= data.searchTerm %>?page=<%= i %>"><%= i %></a></li>
+            <% } %>
+          </ul>
+        </div> -->
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4">
+      <aside class="right_content">
+        <div class="single_sidebar">
+          <h2><span>BÀI VIẾT THỊNH HÀNH</span></h2>
+          <ul class="spost_nav">
+            <% layout.posts.slice(0,4).forEach((item)=> { %>
+              <li>
+                <div class="media wow fadeInDown"> <a href="/post/<%= item.post_id %>" class="media-left"> <img alt=""
+                      src="img/<%= item.image_url %>"> </a>
+                  <div class="media-body"> <a href="/post/<%= item.post_id %>" class="catg_title">
+                      <%= item.title %>
+                    </a> </div>
+                </div>
+              </li>
+              <% }) %>
+          </ul>
+        </div>
+        <div class="single_sidebar wow fadeInDown">
+          <h2><span>DANH MỤC</span></h2>
+          <select class="catgArchive">
+            <option>Chọn danh mục</option>
+            <% layout.categories.slice(0,10).forEach((item)=> { %>
+              <option>
+                <%= item.category_name %>
+              </option>
+              <% }) %>
+          </select>
+        </div>
+        
+      </aside>
+    </div>
+  </div>
+</section>

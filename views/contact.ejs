@@ -1,42 +1,45 @@
 <section id="contentSection">
-    <div class="row">
-      <div class="col-lg-8 col-md-8 col-sm-8">
-        <div class="left_content">
-          <div class="contact_area">
-            <h2>Liên hệ</h2>
-            <p>Góp ý cho chúng tôi để cải thiện chất lượng bài viết!</p>
-            <% if (typeof success !=='undefined' && success==='true' ) { %>
-              <div class="alert alert-success">
-                <strong>Tin nhắn đã được gửi!</strong>
-              </div>
-              <% } %>
-                <form action="/contact" method="post" class="contact_form">
-                  <input name="name" class="form-control" type="text" placeholder="Tên*">
-                  <input name="email" class="form-control" type="email" placeholder="Email*">
-                  <textarea name="message" class="form-control" cols="30" rows="10" placeholder="Nội dung*"></textarea>
-                  <input type="submit" value="Gửi">
-                </form>
-          </div>
+  <div class="row">
+    <div class="col-lg-8 col-md-8 col-sm-8">
+      <div class="left_content">
+        <div class="contact_area">
+          <h2>Liên hệ</h2>
+          <p>Góp ý cho chúng tôi để cải thiện chất lượng bài viết!</p>
+          <% if (typeof success !=='undefined' && success==='true' ) { %>
+            <div class="alert alert-success">
+              <strong>Tin nhắn đã được gửi!</strong>
+            </div>
+            <% } %>
+              <form action="/contact" method="post" class="contact_form">
+                <input name="name" class="form-control" type="text" placeholder="Tên*" required>
+                <input name="email" class="form-control" type="email" placeholder="Email*" required>
+                <input type="text" class="form-control" name="phone" id="phone" placeholder="Số điện thoại*" required>
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Tiêu đề*" required>
+                <textarea name="message" class="form-control" cols="30" rows="10" placeholder="Nội dung*"
+                  required></textarea>
+                <input type="submit" value="Gửi">
+              </form>
         </div>
       </div>
-      <div class="col-lg-4 col-md-4 col-sm-4">
-        <aside class="right_content">
-          <div class="single_sidebar">
-            <h2><span>BÀI VIẾT THỊNH HÀNH</span></h2>
-            <ul class="spost_nav">
-              <% layout.posts.slice(0,4).forEach((item)=> { %>
-                <li>
-                  <div class="media wow fadeInDown"> <a href="/post/<%= item.post_id %>" class="media-left"> <img alt=""
-                        src="img/<%= item.image_url %>"> </a>
-                    <div class="media-body"> <a href="/post/<%= item.post_id %>" class="catg_title">
-                        <%= item.title %>
-                      </a> </div>
-                  </div>
-                </li>
-                <% }) %>
-            </ul>
-          </div>
-        </aside>
-      </div>
     </div>
-  </section>
+    <div class="col-lg-4 col-md-4 col-sm-4">
+      <aside class="right_content">
+        <div class="single_sidebar">
+          <h2><span>BÀI VIẾT THỊNH HÀNH</span></h2>
+          <ul class="spost_nav">
+            <% layout.posts.slice(0,4).forEach((item)=> { %>
+              <li>
+                <div class="media wow fadeInDown"> <a href="/post/<%= item.post_id %>" class="media-left"> <img alt=""
+                      src="img/<%= item.image_url %>"> </a>
+                  <div class="media-body"> <a href="/post/<%= item.post_id %>" class="catg_title">
+                      <%= item.title %>
+                    </a> </div>
+                </div>
+              </li>
+              <% }) %>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

@@ -84,20 +84,21 @@ app.get("/contact", (req, res) => {
 
 //Xu ly form contact
 app.post("/contact", (req, res) => {
-	const { name, email, message } = req.body;
-	console.log("Thông tin khách hàng:", name, email, message);
-
-	const query = "INSERT INTO contacts (NAME, email, message) VALUES (?, ?, ?)";
-	conn.query(query, [name, email, message], (err, result) => {
-		if (err) {
-			console.error("Error inserting contact:", err);
-			res.status(500).send("Error submitting contact form");
-			return;
-		}
-		// Redirect back to the contact page with a success message
-		res.redirect("/contact?success=true");
+	const { name, email, phone, subject, message } = req.body;
+	console.log("Thông tin khách hàng:", name, email, phone, subject, message);
+  
+	const query =
+	  "INSERT INTO contacts (name, email, phone, subject, message) VALUES (?, ?, ?, ?, ?)";
+	conn.query(query, [name, email, phone, subject, message], (err, result) => {
+	  if (err) {
+		console.error("Error inserting contact:", err);
+		res.status(500).send("Error submitting contact form");
+		return;
+	  }
+	  // Redirect back to the contact page with a success message
+	  res.redirect("/contact?success=true");
 	});
-});
+  });
 
 app.get('/post/:id', (req, res) => {
 	const { id } = req.params;
@@ -148,6 +149,42 @@ app.get('/post/:id', (req, res) => {
 			return res.render("layout", { content: "single_page.ejs", data: data });
 		});
 	});
+});
+
+app.get('/search', (req, res) => {
+	const searchKey = req.query.searchKey;
+	console.log('searchKey:', searchKey);
+	const query = `
+		SELECT post_id, title, subtitle, image_url 
+		FROM posts join categories on posts.category_id = categories.category_id
+		WHERE posts.status = 1 AND (title LIKE ? OR subtitle LIKE ?)
+	`;
+
+	const searchKeyLike = `%${searchKey}%`;
+
+	console.log('searchKeyLike:', searchKeyLike);
+	conn.query(query, [searchKeyLike, searchKeyLike], (err, result) => {
+		if (err) {
+			console.error('Lỗi truy vấn dữ liệu:', err);
+			return next();
+		}
+
+		console.log('result:', result);
+
+		const data = {
+			posts: JSON.parse(JSON.stringify(result)), totalPages: 5, searchTerm: searchKey
+		}
+
+		console.log('data:', data);
+
+		res.render('layout', { content: 'search.ejs', data: data, searchKey: searchKey });
+	});
+});
+
+
+app.post('/search', (req, res) => {
+	const searchKey = req.body.searchKey;
+	res.redirect(`/search?searchKey=${searchKey}`);
 });
 
 app.listen(port, () => console.log(`Server running at http://127.0.0.1:${port}`))

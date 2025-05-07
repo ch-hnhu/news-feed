@@ -1,0 +1,54 @@
+<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border: 1px solid #f1c40f; border-radius: 8px;">
+            <form action="/contact" method="POST" id="contactForm">
+                <div class="modal-header" style="background-color: #f1c40f; position: relative; padding: 15px 20px;">
+                    <h4 class="modal-title text-left" id="contactModalLabel"
+                        style="font-weight: bold; color: #000; width: 100%;">Liên hệ với chúng tôi</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                        style="position: absolute; top: 15px; right: 20px; font-size: 30px;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="background-color: #f8f9fa; padding: 15px 20px;">
+                    <div class="form-group">
+                        <label for="name">Họ tên</label>
+                        <input type="text" class="form-control" name="name" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Số điện thoại</label>
+                        <input type="text" class="form-control" name="phone" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Tiêu đề</label>
+                        <input type="text" class="form-control" name="subject" id="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Nội dung</label>
+                        <textarea class="form-control" name="message" id="message" rows="4" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer" style="background-color: #f8f9fa;padding: 15px 20px;">
+
+                    <button type="button" class="btn btn-default btn-lg" style="width: 100px; height: 40px; font-size: 16px; font-weight: 600;
+       background-color: #ffffff; border: 2px solid #c9e528;
+       box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); color: #000;" data-dismiss="modal">Đóng</button>
+
+
+                    <button type="submit" class="btn btn-lg" style="width: 150px; height: 40px; font-size: 16px; font-weight: 600;
+       background-color: #f1c40f; border: none; color: #000;">
+                        Gửi liên hệ
+                    </button>
+
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
